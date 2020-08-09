@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.codelabs.paging.model.Article
 import com.jet2.jet2travelblog.GlideRequests
 import com.jet2.jet2travelblog.R
+import com.jet2.jet2travelblog.Utility
+import kotlin.time.ExperimentalTime
 
 /**
  * View Holder for a [Article] RecyclerView list item.
@@ -46,19 +48,35 @@ class BlogViewHolder(view: View, private val glide: GlideRequests) : RecyclerVie
     }
 
     fun bind(article: Article?) {
-        article?.let {
-            showRepoData(it)
+        if (article == null) {
+            val resources = itemView.resources
+            textViewComments.text = resources.getString(R.string.loading)
+            textViewContents.text = resources.getString(R.string.loading)
+            textViewLikes.text = resources.getString(R.string.loading)
+            textViewArticleTitle.text = resources.getString(R.string.loading)
+            textViewUrl.text = resources.getString(R.string.loading)
+            textViewDesignation.text = resources.getString(R.string.loading)
+            glide.clear(imageViewArticle)
+            glide.clear(imageViewAvatar)
+        } else {
+            showRepoData(article)
         }
     }
 
+
+    @OptIn(ExperimentalTime::class)
     private fun showRepoData(article: Article) {
         this.article = article
 
-        textViewSince.text = article.createdAt
-        textViewComments.text = article.comments.toString()
+        Utility.getDiff(article.createdAt).let {
+            textViewSince.text = it
+        } ?: run {
+            textViewSince.text = "Not available"
+        }
+        textViewComments.text = Utility.getComments(article.comments)
 
         textViewContents.text = article.content
-        textViewLikes.text = article.likes.toString()
+        textViewLikes.text = Utility.getLikes(article.likes)
 
         //media
         article.media.getOrNull(0)?.apply {
@@ -75,7 +93,13 @@ class BlogViewHolder(view: View, private val glide: GlideRequests) : RecyclerVie
                 imageViewArticle.visibility = View.GONE
                 glide.clear(imageViewArticle)
             }
+        } ?: run {
+            textViewArticleTitle.visibility = View.INVISIBLE
+            textViewUrl.visibility = View.INVISIBLE
+            glide.clear(imageViewArticle)
+            imageViewArticle.visibility = View.GONE
         }
+
 
         //User
         article.user.getOrNull(0)?.apply {
@@ -92,6 +116,11 @@ class BlogViewHolder(view: View, private val glide: GlideRequests) : RecyclerVie
                 imageViewAvatar.visibility = View.GONE
                 glide.clear(imageViewAvatar)
             }
+        } ?: run {
+            textViewUsername.visibility = View.INVISIBLE
+            textViewDesignation.visibility = View.INVISIBLE
+            glide.clear(imageViewAvatar)
+            //imageViewAvatar.visibility = View.GONE
         }
 
     }

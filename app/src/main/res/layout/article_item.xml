@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1 min"
+        android:textColor="#151515"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,6 +37,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="User Name"
+        android:textColor="#151515"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,6 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Article Contents"
+        android:textColor="#151515"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewArticle" />
@@ -73,6 +78,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Article Title"
+        android:textColor="#151515"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewContents" />
@@ -83,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Article Url"
+        android:textColor="#151515"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewArticleTitle" />
@@ -93,6 +101,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="45 Likes"
+        android:textColor="#151515"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewUrl" />
 
@@ -102,6 +112,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="30 Comments"
+        android:textColor="#151515"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewUrl" />
 

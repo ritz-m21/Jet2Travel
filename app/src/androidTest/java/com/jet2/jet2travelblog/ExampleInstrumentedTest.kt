@@ -8,6 +8,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.time.ExperimentalTime
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -37,4 +38,10 @@ class ExampleInstrumentedTest {
 //        val repository = BlogRepository(myObjectUnderTest, BlogDatabase.getInstance(InstrumentationRegistry.getInstrumentation().targetContext))
 //        val result: Flow<PagingData<Article>> = repository.getResultStream()
 //    }
+
+    @ExperimentalTime
+    @Test
+    fun testDate() {
+        assertEquals("4", Utility.getDiff("2020-04-17T01:30:57.213Z"))
+    }
 }
