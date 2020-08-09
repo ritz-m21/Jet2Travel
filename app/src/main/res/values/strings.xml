@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Jet2 TravelBlog</string>
+    <string name="retry">Retry</string>
+    <string name="title">Articles</string>
 </resources>

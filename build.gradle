@@ -6,6 +6,7 @@ buildscript {
     ext.interceptor_version = "4.0.0"
     ext.lifecycle_version = "2.2.0"
     ext.paging_version = "3.0.0-alpha03"
+    ext.versions_glide = "4.8.0"
     repositories {
         google()
         jcenter()
