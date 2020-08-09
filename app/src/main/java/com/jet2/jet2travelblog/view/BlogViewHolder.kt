@@ -70,8 +70,6 @@ class BlogViewHolder(view: View, private val glide: GlideRequests) : RecyclerVie
 
         Utility.getDiff(article.createdAt).let {
             textViewSince.text = it
-        } ?: run {
-            textViewSince.text = "Not available"
         }
         textViewComments.text = Utility.getComments(article.comments)
 
@@ -80,6 +78,8 @@ class BlogViewHolder(view: View, private val glide: GlideRequests) : RecyclerVie
 
         //media
         article.media.getOrNull(0)?.apply {
+            textViewArticleTitle.visibility = View.VISIBLE
+            textViewUrl.visibility = View.VISIBLE
             textViewArticleTitle.text = this.title
             textViewUrl.text = this.url
 
@@ -94,8 +94,8 @@ class BlogViewHolder(view: View, private val glide: GlideRequests) : RecyclerVie
                 glide.clear(imageViewArticle)
             }
         } ?: run {
-            textViewArticleTitle.visibility = View.INVISIBLE
-            textViewUrl.visibility = View.INVISIBLE
+            textViewArticleTitle.visibility = View.GONE
+            textViewUrl.visibility = View.GONE
             glide.clear(imageViewArticle)
             imageViewArticle.visibility = View.GONE
         }
@@ -103,6 +103,8 @@ class BlogViewHolder(view: View, private val glide: GlideRequests) : RecyclerVie
 
         //User
         article.user.getOrNull(0)?.apply {
+            textViewUsername.visibility = View.VISIBLE
+            textViewDesignation.visibility = View.VISIBLE
             textViewUsername.text = String.format("%s %s", this.name, this.lastname)
             textViewDesignation.text = this.designation
 
@@ -117,8 +119,8 @@ class BlogViewHolder(view: View, private val glide: GlideRequests) : RecyclerVie
                 glide.clear(imageViewAvatar)
             }
         } ?: run {
-            textViewUsername.visibility = View.INVISIBLE
-            textViewDesignation.visibility = View.INVISIBLE
+            textViewUsername.visibility = View.GONE
+            textViewDesignation.visibility = View.GONE
             glide.clear(imageViewAvatar)
             //imageViewAvatar.visibility = View.GONE
         }
